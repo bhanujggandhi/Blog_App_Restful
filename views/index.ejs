@@ -1,0 +1,10 @@
+<h1>INDEX PAGE!!!</h1>
+
+<% for(var i = 0; i < blogs.length; i++){ %> 
+    <div>
+        <h2><%= blogs[i].title %> </h2>
+        <img src="<%= blogs[i].image %>" alt="">
+        <span><%= blogs[i].created %> </span>
+        <p><%= blogs[i].body %> </p>
+    </div>
+<% } %>
