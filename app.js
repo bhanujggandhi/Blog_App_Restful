@@ -1,5 +1,6 @@
 var bodyParser = require('body-parser'),
 	methodOverride = require('method-override'),
+	expressSanitizer = require('express-sanitizer'),
 	mongoose = require('mongoose'),
 	express = require('express'),
 	app = express();
@@ -9,6 +10,7 @@ mongoose.connect('mongodb://localhost:27017/blog_app', { useNewUrlParser: true, 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(expressSanitizer());
 app.use(methodOverride('_method'));
 
 // MONGOOSE/MODEL CONFIG
@@ -32,6 +34,7 @@ app.get('/', function(req, res) {
 	res.redirect('/blogs');
 });
 
+// INDEX ROUTE
 app.get('/blogs', function(req, res) {
 	Blog.find({}, function(err, blogs) {
 		if (err) {

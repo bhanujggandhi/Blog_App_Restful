@@ -1,14 +1,31 @@
-<%- include("partials/header") %> 
-<h1>INDEX PAGE!!!</h1>
-
-<% for(var i = 0; i < blogs.length; i++){ %> 
-    <div>
-        <h2><%= blogs[i].title %> </h2>
-        <img src="<%= blogs[i].image %>" alt="">
-        <span><%= blogs[i].created %> </span>
-        <p><%= blogs[i].body.substring(0, 100) %>....</p>
-        <a href="/blogs/<%= blogs[i]._id %> ">Read More</a>
+<%- include("partials/header") %>
+<div class="ui main text container">
+    <div class="ui huge header">Bhanuj's Blog</div>
+    <div class="ui top attached segment">
+        <div class="ui divided items">
+            <% for(var i = 0; i < blogs.length; i++){ %> 
+                <div class="item">
+                    <div class="image">
+                        <img src="<%= blogs[i].image %>" alt="">
+                    </div>
+                    <div class="content">
+                        <a href="/blogs/<%= blogs[i]._id %>" class="header"><%= blogs[i].title %></a>
+                        <div class="meta">
+                            <span><%= blogs[i].created.toDateString() %> </span>
+                        </div>
+                        <div class="description">
+                            <p><%= blogs[i].body.substring(0, 100) %>....</p>
+                        </div>
+                        <div class="extra">
+                            <a href="/blogs/<%= blogs[i]._id %>" class="circular ui icon button">
+                                Read more..
+                                <i class="arrow alternate circle right icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        </div>
     </div>
-<% } %>
-
+</div> 
 <%- include("partials/footer") %> 

@@ -9,3 +9,10 @@ i.icon {
 #delete {
 	display: inline;
 }
+
+footer {
+	/* Increased specificity for SO snippet priority */
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
